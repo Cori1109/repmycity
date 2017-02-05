@@ -1,9 +1,16 @@
 .product-item{
   @include flex-grid-column(4, 10);
-  margin-bottom: rem-calc(30);
+  margin-bottom: rem-calc(10);
 
   .product-item-inner{
-    border: 1px solid gray;
-    padding: rem-calc(15);    
+    background-color: $white;
+    padding: rem-calc(15);
+  }
+
+  .product-item-image{
+    height: rem-calc(300);
+    width: 100%;
+    background-position: 0 0;
+    background-size: cover;
   }
 }

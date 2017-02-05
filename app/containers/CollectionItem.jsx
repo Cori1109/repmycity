@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 class CollectionItem extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class CollectionItem extends React.Component {
     return (
       <div className="collection-item">
         <div className="collection-item-inner">
-          <h2 className="text-center"><a href={'/collection/' + id}>{title}</a></h2>
+          <h2 className="text-center"><Link to={`/collection/${id}`}>{title}</Link></h2>
         </div>
       </div>
     )

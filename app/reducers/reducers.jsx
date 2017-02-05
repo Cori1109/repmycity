@@ -10,6 +10,11 @@ export var productsReducer = (state = {all: [], active: null}, action) => {
         ...state,
         active: action.parsedProduct
       };
+    case 'CLEAR_ACTIVE_PRODUCT':
+      return {
+        ...state,
+        active: null
+      };
     default:
       return state;
   }

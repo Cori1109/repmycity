@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from 'Header';
+import Footer from 'Footer';
 import DocumentMeta from 'react-document-meta';
 
 class Main extends React.Component{
@@ -27,10 +28,11 @@ class Main extends React.Component{
     return (
       <div id="main">
         <DocumentMeta {...meta} />
-        <Header/>
-        <div className="container">
+        <Header />
+        <div id="main-container" className="container">
           {this.props.children}
         </div>
+        <Footer />
       </div>
     );
   }

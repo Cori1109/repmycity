@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 import shopifyAPI from 'shopifyAPI';
+import 'font-awesome-sass-loader';
 
 let actions = require('actions');
 let store = require('configureStore').configure();

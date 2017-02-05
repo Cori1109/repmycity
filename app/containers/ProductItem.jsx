@@ -1,13 +1,16 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 class ProductItem extends React.Component {
   render() {
-    let {title, id} = this.props;
+    let {title, id, image} = this.props;
 
     return (
       <div className="product-item">
         <div className="product-item-inner">
-          <h6 className="text-center"><a href={'/product/' + id}>{title}</a></h6>
+          <Link to={`/product/${id}`}><div className="product-item-image" style={{backgroundImage: 'url(' + image.src + ')'}}></div></Link>
+          <hr />
+          <h6 className="text-center"><Link to={`/product/${id}`}>{title}</Link></h6>
           <button onClick={this.props.addToCart} className="btn">Add To Cart</button>
         </div>
       </div>

@@ -12,6 +12,10 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.4",
+    "file-loader": "^0.10.0",
+    "font-awesome": "^4.7.0",
+    "font-awesome-sass-loader": "^1.0.3",
+    "font-awesome-webpack": "^0.0.4",
     "json-loader": "^0.5.4",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
@@ -25,7 +29,8 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "shopify-buy": "^0.6.1",
-    "stats-webpack-plugin": "^0.4.3"
+    "stats-webpack-plugin": "^0.4.3",
+    "url-loader": "^0.5.7"
   },
   "devDependencies": {
     "babel-core": "^6.5.1",

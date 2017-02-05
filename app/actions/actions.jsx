@@ -10,6 +10,13 @@ export var setActiveProduct = (id) => {
   };
 };
 
+export var clearActiveProduct = () => {
+  return {
+    type: 'CLEAR_ACTIVE_PRODUCT'
+  };
+};
+
+
 export var setActiveCollection = (id) => {
   return (dispatch) => {
     return shopifyAPI.fetchCollection(id).then((data) => {
