@@ -1,0 +1,10 @@
+input{
+  &[placeholder]{
+    font-style: italic;
+  }
+}
+
+.hidden-field{
+  position: absolute;
+  left: -5000px;
+}

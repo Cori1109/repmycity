@@ -1,0 +1,224 @@
+// --------------------------------------------------
+// Helper classes
+// --------------------------------------------------
+
+// displays
+.display-block{
+  display: block;
+}
+
+// opacity
+.transparent{
+  opacity: 0;
+  pointer-events: none;
+}
+
+// fonts
+.small{
+  font-size: $small-font-size;
+  line-height: rem-calc(16);
+}
+
+// nobr
+.nobr{
+  white-space: nowrap;
+}
+
+
+// colors
+.font-red{
+  color: $red;
+}
+.font-green{
+  color: $success-color;
+}
+
+// margins
+.margin-none{
+  margin: 0;
+}
+
+.margin-xlarge{
+  margin: rem-calc($spacing-xlarge);
+}
+
+.margin-large{
+  margin: rem-calc($spacing-large);
+}
+
+.margin-medium{
+  margin: rem-calc($spacing-medium);
+}
+
+.margin-small{
+  margin: rem-calc($spacing-small);
+}
+
+// margins: top
+
+.margin-top-xlarge{
+  margin-top: rem-calc($spacing-xlarge);
+}
+
+.margin-top-large{
+  margin-top: rem-calc($spacing-large);
+}
+
+.margin-top-medium{
+  margin-top: rem-calc($spacing-medium);
+}
+
+.margin-top-small{
+  margin-top: rem-calc($spacing-small);
+}
+
+
+// margins: bottom
+
+.margin-bottom-xlarge{
+  margin-bottom: rem-calc($spacing-xlarge);
+}
+
+.margin-bottom-large{
+  margin-bottom: rem-calc($spacing-large);
+}
+
+.margin-bottom-medium{
+  margin-bottom: rem-calc($spacing-medium);
+}
+
+.margin-bottom-small{
+  margin-bottom: rem-calc($spacing-small);
+}
+
+
+// margins: left
+
+.margin-left-xlarge{
+  margin-left: rem-calc($spacing-xlarge);
+}
+
+.margin-left-large{
+  margin-left: rem-calc($spacing-large);
+}
+
+.margin-left-medium{
+  margin-left: rem-calc($spacing-medium);
+}
+
+.margin-left-small{
+  margin-left: rem-calc($spacing-small);
+}
+
+
+// margins: right
+
+.margin-right-xlarge{
+  margin-right: rem-calc($spacing-xlarge);
+}
+
+.margin-right-large{
+  margin-right: rem-calc($spacing-large);
+}
+
+.margin-right-medium{
+  margin-right: rem-calc($spacing-medium);
+}
+
+.margin-right-small{
+  margin-right: rem-calc($spacing-small);
+}
+
+
+// paddings
+.padding-xlarge{
+  padding: rem-calc($spacing-xlarge);
+}
+
+.padding-large{
+  padding: rem-calc($spacing-large);
+}
+
+.padding-medium{
+  padding: rem-calc($spacing-medium);
+}
+
+.padding-small{
+  padding: rem-calc($spacing-small);
+}
+
+
+// paddings: top
+
+.padding-top-xlarge{
+  padding-top: rem-calc($spacing-xlarge);
+}
+
+.padding-top-large{
+  padding-top: rem-calc($spacing-large);
+}
+
+.padding-top-medium{
+  padding-top: rem-calc($spacing-medium);
+}
+
+.padding-top-small{
+  padding-top: rem-calc($spacing-small);
+}
+
+
+// paddings: bottom
+
+.padding-bottom-xlarge{
+  padding-bottom: rem-calc($spacing-xlarge);
+}
+
+.padding-bottom-large{
+  padding-bottom: rem-calc($spacing-large);
+}
+
+.padding-bottom-medium{
+  padding-bottom: rem-calc($spacing-medium);
+}
+
+.padding-bottom-small{
+  padding-bottom: rem-calc($spacing-small);
+}
+
+
+// paddings: left
+
+.padding-left-xlarge{
+  padding-left: rem-calc($spacing-xlarge);
+}
+
+.padding-left-large{
+  padding-left: rem-calc($spacing-large);
+}
+
+.padding-left-medium{
+  padding-left: rem-calc($spacing-medium);
+}
+
+.padding-left-small{
+  padding-left: rem-calc($spacing-small);
+}
+
+
+// paddings: right
+
+.padding-right-xlarge{
+  padding-right: rem-calc($spacing-xlarge);
+}
+
+.padding-right-large{
+  padding-right: rem-calc($spacing-large);
+}
+
+.padding-right-medium{
+  padding-right: rem-calc($spacing-medium);
+}
+
+.padding-right-small{
+  padding-right: rem-calc($spacing-small);
+}

@@ -1,0 +1,9 @@
+.collection-item{
+  @include flex-grid-column(4, 10);
+  margin-bottom: rem-calc(30);
+
+  .collection-item-inner{
+    border: 1px solid gray;
+    padding: rem-calc(15);
+  }
+}
