@@ -44,11 +44,12 @@ export var addProducts = (products) => {
 export var preloadProductImages = () => {
   return (dispatch, getState) => {
     let products = getState().products.all;
-    products.map(lineItem => {
-      let image = new Image();
-      // console.log('image src: ', lineItem.images[0].src);
-      image.src = lineItem.images[0].src;
-      return image;
+    let images = [];
+    products.map((product, index) => {
+      images[index] = new Image();
+      images[index].src = product.selectedVariant.imageVariants[5].src;
+      return images[index];
     });
+    console.log(images);
   };
 };

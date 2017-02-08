@@ -25,7 +25,7 @@ class Products extends React.Component {
       return (
         <div className="row">
           {products.map(product => {
-            return <ProductItem key={product.key} addToCart={() => this.handleAddToCart(product)} id={product.attrs.product_id} title={product.attrs.title} image={product.attrs.images[0]} />
+            return <ProductItem key={product.key} addToCart={() => this.handleAddToCart(product)} id={product.attrs.product_id} title={product.attrs.title} image={product.selectedVariant.imageVariants[5].src} />
           })}
         </div>
       )
