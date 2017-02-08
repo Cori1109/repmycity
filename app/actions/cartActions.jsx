@@ -3,20 +3,29 @@ import shopifyAPI from 'shopifyAPI';
 export var startAddorUpdateCartItem = (productVariant, quantity) => {
   return (dispatch, getState) => {
     let cart = getState().cart;
-    let cartLineItem = findCartItemByVariantId(productVariant.variant_id);
+    let variantId;
+
+    // assign variant id based on is product or cart line item
+    if(productVariant.variant_id){
+      variantId = productVariant.variant_id;
+    }else{
+      variantId = productVariant.id;
+    }
+
+    let cartLineItem = findCartItemByVariantId(variantId);
 
     // function to check if product variant already exists in cart
     function findCartItemByVariantId(variantId) {
       return cart.lineItems.filter((item) => {
+        // console.log('item.variant_id: ', item.variant_id);
+        // console.log('variantId: ', variantId);
         return (item.variant_id === variantId);
       })[0];
     }
 
     if (cartLineItem) {
-      console.log('this item was found in the cart, so just update it...', cartLineItem);
       dispatch(updateCartItem(cartLineItem, parseInt(quantity)));
     } else {
-      console.log('this seems to be a new product, so add it to the cart as a new line item', productVariant);
       dispatch(addToCart(productVariant, quantity));
     }
 
@@ -34,6 +43,7 @@ export var addToCart = (productVariant, quantity) => {
     shopifyAPI.cart.createLineItemsFromVariants({ variant: productVariant, quantity: quantity }).then(function(updatedCart) {
       let updatedCartItems = updatedCart.lineItems;
       dispatch({ type: 'UPDATE_CART_ITEMS', updatedCartItems });
+      dispatch(openCart());
     }).catch(function (errors) {
       console.log('Failed to addToCart', errors);
     });

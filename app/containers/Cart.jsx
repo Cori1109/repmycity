@@ -29,7 +29,6 @@ class Cart extends React.Component {
 
   render() {
     let {isOpen, lineItems, lineItemCount, subtotal} = this.props.cart;
-
     let renderLineItems = () => {
       if (lineItems.length > 0){
         return lineItems.map(lineItem => {
