@@ -1,34 +1,54 @@
-var ShopifyBuy = require('shopify-buy');
+let React = require('react');
+let ShopifyBuy = require('shopify-buy');
+let store = require('configureStore').configure();
 
-const SHOP_CLIENT = ShopifyBuy.buildClient({
-  apiKey: 'e0ab8cf9b5a30cee2616bf151a56c763',
-  domain: 'rmc-preview.myshopify.com',
-  appId: '6'
-});
+class shopifyAPI {
+  constructor() {
+    this.client = ShopifyBuy.buildClient({
+      apiKey: 'e0ab8cf9b5a30cee2616bf151a56c763',
+      domain: 'rmc-preview.myshopify.com',
+      appId: '6'
+    });
+    this.cart = {};
+  }
 
-export default SHOP_CLIENT;
+  createCart() {
+    return new Promise((resolve, reject) => {
+      this.client.createCart().then((newCart) => {
+        localStorage.setItem('lastCartId', newCart.id);
+        console.log('created new cart', newCart);
+        // set singleton cart object to reference shopify cart
+        this.cart = newCart;
 
+        // set localCart (redux connected) to keep track of state changes
+        let localCart = {
+          isOpen: false,
+          lineItemsCount: 0,
+          lineItems: [],
+          subtotal: 0
+        }
+        resolve(localCart);
+      });
+    });
+  }
 
-  // fetchProducts: function () {
-  //   SHOP_CLIENT.fetchAllProducts().then((data) => {
-  //     store.dispatch(actions.setProducts(data));
-  //   });
-  // },
-  // getAllCollections: function () {
-  //   return new Promise(function(resolve, reject) {
-  //      resolve(SHOP_CLIENT.fetchAllCollections());
-  //   });
-  // },
-  // getProduct: function (productId) {
-  //   return SHOP_CLIENT.fetchProduct(productId);
-  // },
-  // getCollection: function (collectionHandle) {
-  //   // fetch a product using resource id
-  //   SHOP_CLIENT.fetchProduct(productId)
-  //     .then(function (product) {
-  //       console.log('product', product);
-  //     })
-  //     .catch(function () {
-  //       console.log('Request failed');
-  //     });
-  // }
+  restoreCart() {
+    return new Promise((resolve, reject) => {
+      this.client.fetchCart(localStorage.getItem('lastCartId')).then((remoteCart) => {
+        // set singleton cart object to reference shopify cart
+        this.cart = remoteCart;
+
+        // set localCart (redux connected) to keep track of state changes
+        let localCart = {
+          isOpen: false,
+          lineItemsCount: remoteCart.lineItemCount,
+          lineItems: remoteCart.lineItems,
+          subtotal: remoteCart.subtotal
+        }
+        resolve(localCart);
+      });
+    });
+  }
+}
+
+export default (new shopifyAPI);

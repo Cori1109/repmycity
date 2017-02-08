@@ -1,6 +1,6 @@
 import React from 'react';
 let { connect } = require('react-redux');
-let actions = require('actions');
+let actions = require('collectionActions');
 
 class Collection extends React.Component {
   constructor(){

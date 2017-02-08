@@ -8,7 +8,7 @@ export var productsReducer = (state = {all: [], active: null}, action) => {
     case 'SET_ACTIVE_PRODUCT':
       return {
         ...state,
-        active: action.parsedProduct
+        active: action.product
       };
     case 'CLEAR_ACTIVE_PRODUCT':
       return {
@@ -37,15 +37,28 @@ export var collectionsReducer = (state = {all: [], active: null}, action) => {
   }
 };
 
-export var cartReducer = (state = {isOpen: false, items: []}, action) => {
+export var cartReducer = (state = {isOpen: false, lineItems: []}, action) => {
   switch(action.type) {
-    case 'ADD_PRODUCT_TO_CART':
+    // case 'RESTORE_PREVIOUS_CART':
+    //   return action.remoteCart;
+    case 'SET_INITIAL_CART_STATE':
+      return {
+        ...action.localCart
+      };
+    case 'UPDATE_CART_ITEMS':
       return {
         ...state,
-        items: [
-          ...state.items,
-          action.product
-        ]
+        lineItems: action.updatedCartItems
+      };
+    case 'UPDATE_CART_ITEMS_COUNT':
+      return {
+        ...state,
+        lineItemsCount: action.updatedCartItemsCount
+      };
+    case 'UPDATE_CART_SUBTOTAL':
+      return {
+        ...state,
+        subtotal: action.newSubtotal
       };
     case 'OPEN_CART':
       return {

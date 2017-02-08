@@ -45,12 +45,15 @@ module.exports = {
       './app/containers',
       './app/presentational',
       './app/vendor',
-      './app/api'
+      './app/api',
+      './app/utils'
     ],
     alias: {
       app: 'app',
       applicationStyles: 'app/styles/app.scss',
-      actions: 'app/actions/actions.jsx',
+      cartActions: 'app/actions/cartActions.jsx',
+      productActions: 'app/actions/productActions.jsx',
+      collectionActions: 'app/actions/collectionActions.jsx',
       reducers: 'app/reducers/reducers.jsx',
       configureStore: 'app/store/configureStore.jsx'
     },

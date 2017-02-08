@@ -1,18 +1,46 @@
 import React from 'react';
 let { connect } = require('react-redux');
-let actions = require('actions');
+let actions = require('cartActions');
 
+import shopifyAPI from 'shopifyAPI';
 import CartItem from 'Cart-item';
 
+import Format from 'format';
+
 class Cart extends React.Component {
+  constructor(){
+    super();
+
+    let dispatch;
+    let handleCheckout = this.handleCheckout();
+  }
+
+  componentWillMount() {
+    this.dispatch = this.props.dispatch;
+  }
 
   handleCloseCart() {
-    let {dispatch} = this.props;
-    dispatch(actions.closeCart());
+    this.dispatch(actions.closeCart());
+  }
+
+  handleCheckout() {
+    window.open(shopifyAPI.cart.checkoutUrl, '_self');
   }
 
   render() {
-    let {isOpen, items} = this.props.cart;
+    let {isOpen, lineItems, lineItemCount, subtotal} = this.props.cart;
+
+    let renderLineItems = () => {
+      if (lineItems.length > 0){
+        return lineItems.map(lineItem => {
+          return <CartItem
+            key={lineItem.id}
+            item={lineItem}
+            quantity={lineItem.quantity}
+          />
+        });
+      }
+    };
 
     return (
       <div className={"cart " + (isOpen ? 'js-active' : '' )}>
@@ -27,10 +55,7 @@ class Cart extends React.Component {
         <div className="cart-form">
           <div className="cart-item-container cart-section">
             <div>
-              {items.map(item => {
-                // return <div key={item.product_id}>cart item</div>
-                return <CartItem key={item.product_id} item={item} />
-              })}
+              {renderLineItems()}
             </div>
           </div>
 
@@ -39,12 +64,19 @@ class Cart extends React.Component {
               <div className="type--caps cart-info__total cart-info__small">Total</div>
               <div className="cart-info__pricing">
                 <span className="cart-info__small cart-info__total">USD</span>
-                <span className="pricing pricing--no-padding"></span>
+                <span className="pricing pricing--no-padding">{Format.asMoney(subtotal)}</span>
               </div>
             </div>
             <div className="cart-actions-container cart-section type--center">
               <div className="cart-discount-notice cart-info__small">Shipping and discount codes are added at checkout.</div>
-              <input type="submit" className="btn btn--cart-checkout" id="checkout" name="checkout" value="Checkout" />
+              <input
+                type="submit"
+                className="btn btn--cart-checkout"
+                id="checkout"
+                name="checkout"
+                value="Checkout"
+                onClick={this.handleCheckout}
+              />
             </div>
           </div>
         </div>

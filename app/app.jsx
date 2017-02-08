@@ -5,9 +5,12 @@ import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 import shopifyAPI from 'shopifyAPI';
 import 'font-awesome-sass-loader';
 
-let actions = require('actions');
+let cartActions = require('cartActions');
+let productActions = require('productActions');
+let collectionActions = require('collectionActions');
 let store = require('configureStore').configure();
 import router from 'app/router/';
+
 
 // subscribe to the redux store
 store.subscribe(() => {
@@ -16,8 +19,19 @@ store.subscribe(() => {
 });
 
 // add products and collections to store
-store.dispatch(actions.startAddProducts());
-store.dispatch(actions.startAddCollections());
+store.dispatch(productActions.startAddProducts());
+store.dispatch(collectionActions.startAddCollections());
+
+// create shopify cart instance based on last session (based on localStorage)
+if(localStorage.getItem('lastCartId')) {
+  shopifyAPI.restoreCart().then((localCart) => {
+    store.dispatch({ type: 'SET_INITIAL_CART_STATE', localCart });
+  });
+}else{
+  shopifyAPI.createCart().then((localCart) => {
+    store.dispatch({ type: 'SET_INITIAL_CART_STATE', localCart });
+  });
+}
 
 // App css
 require('style!css!sass!applicationStyles')

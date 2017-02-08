@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
 let { connect } = require('react-redux');
-let actions = require('actions');
+let productActions = require('productActions');
+let cartActions = require('cartActions');
 
 import Loader from 'Loader';
 
@@ -14,11 +15,11 @@ class Product extends React.Component {
 
   componentWillMount(){
     this.dispatch = this.props.dispatch;
-    this.dispatch(actions.setActiveProduct(this.props.params.productId));
+    this.dispatch(productActions.setActiveProduct(this.props.params.productId));
   }
 
   componentWillUnmount(){
-    this.dispatch(actions.clearActiveProduct());
+    this.dispatch(productActions.clearActiveProduct());
   }
 
   render() {
@@ -26,7 +27,8 @@ class Product extends React.Component {
     activeProduct = this.props.activeProduct;
     if (activeProduct){
       let {dispatch} = this.props;
-      let {product_id, title, images, options} = activeProduct;
+      let {product_id, title, images, options} = activeProduct.attrs;
+
 
       return (
         <div className="product-index">
@@ -41,7 +43,11 @@ class Product extends React.Component {
           {images.map(image => {
             return <img key={image.id} height="50" width="50" src={image.src} alt="" />
           })} */}
-          <button onClick={()=>dispatch(actions.addToCart(activeProduct))} className="btn">Add To Cart</button>
+          <button
+            onClick={()=>{
+              dispatch(cartActions.startAddorUpdateCartItem(activeProduct.selectedVariant, 1));
+            }}
+            className="btn">Add To Cart</button>
         </div>
       )
     }else{

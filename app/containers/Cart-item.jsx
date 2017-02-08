@@ -1,29 +1,50 @@
 import React from 'react';
+import Format from 'format';
+let { connect } = require('react-redux');
+let actions = require('cartActions');
 
 class CartItem extends React.Component {
-  render() {
-    let {id, title, variantTitle, quantity, price, images} = this.props.item;
+  constructor(){
+    super();
+  }
 
-    // console.log(imageThumb);
-    let cartItemThumbStyle = {
-      backgroundImage: 'url(' + images[0].src + ')'
+  render() {
+    let {dispatch, item, incrementLineItem, quantity} = this.props;
+
+    let changeQuantity = (quantity) => {
+      // console.log('cart Item object: ', item);
+      dispatch(actions.startAddorUpdateCartItem(item, parseInt(quantity)));
     }
 
     return (
       <div className="cart-item">
-        <div className="cart-item__img" style={cartItemThumbStyle}></div>
+        <div className="cart-item__img" style={{backgroundImage: 'url(' + item.imageVariants[2].src + ')'}}></div>
         <div className="cart-item__content">
           <div className="cart-item__content-row">
-            <div className="cart-item__variant-title">{variantTitle}</div>
-            <span className="cart-item__title">{title}</span>
+            <div className="cart-item__variant-title">{item.variant_title}</div>
+            <span className="cart-item__title">{item.title}</span>
           </div>
           <div className="cart-item__content-row">
             <div className="cart-item__quantity-container">
-              <button className="btn--seamless quantity-decrement" type="button"><span>-</span><span className="hide">Decrement</span></button>
-              <input defaultValue="1" className="cart-item__quantity" type="number" min="0" />
-              <button className="btn--seamless quantity-increment" type="button"><span>+</span><span className="hide">Increment</span></button>
+              <button
+                className="btn--seamless quantity-decrement"
+                type="button"
+                onClick={() => {changeQuantity(-1)}}
+              ><span>-</span><span className="hide">Decrement</span></button>
+              <input
+                value={quantity}
+                className="cart-item__quantity"
+                type="number"
+                min="0"
+                readOnly
+              />
+              <button
+                className="btn--seamless quantity-increment"
+                type="button"
+                onClick={() => {changeQuantity(1)}}
+              ><span>+</span><span className="hide">Increment</span></button>
             </div>
-            <span className="cart-item__price">{price}</span>
+            <span className="cart-item__price">{Format.asMoney(item.price*quantity)}</span>
           </div>
         </div>
       </div>
@@ -31,4 +52,11 @@ class CartItem extends React.Component {
   }
 }
 
-module.exports = CartItem;
+
+export default connect(
+  (state) => {
+    return {
+      cart: state.cart
+    }
+  }
+)(CartItem);
