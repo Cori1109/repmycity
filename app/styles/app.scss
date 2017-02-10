@@ -3,6 +3,10 @@
 // foundation
 @import "base/foundation-modules";
 
+// vendor
+@import "vendor/slick";
+@import "vendor/slick-theme";
+
 // Components
 @import "shared/mixins";
 @import "shared/helper-classes";
@@ -13,6 +17,7 @@
 @import "cart";
 
 @import "products/products-listings";
+@import "products/products-carousel";
 @import "products/product-index";
 @import "products/product";
 
@@ -22,5 +27,4 @@
 
 @import "layout";
 @import "m-header";
-@import "m-nav";
 @import "l-index";

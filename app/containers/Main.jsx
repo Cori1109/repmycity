@@ -30,7 +30,7 @@ class Main extends React.Component{
       <div id="main">
         <DocumentMeta {...meta} />
         <Header />
-        <div id="main-container" className="container">
+        <div id="main-container">
           <Cart />
           {this.props.children}
         </div>

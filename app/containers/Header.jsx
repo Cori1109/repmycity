@@ -9,16 +9,24 @@ class Header extends React.Component {
   render() {
     return (
       <header id="site-header">
-        <nav className="main-nav">
-          <li>
-            <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Home</IndexLink>
-          </li>
-          <li>
-            <Link to="/collections" activeClassName="active"  activeStyle={{fontWeight: 'bold'}}>Collections</Link>
-          </li>
-          <li>
-            <Link to="/products" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Products</Link>
-          </li>
+        <ul className="mini-nav">
+          <li className="mini-nav-item"><a href="#">About</a></li>
+          <li className="mini-nav-item"><a href="#">Order Status</a></li>
+          <li className="mini-nav-item"><a href="#">Map</a></li>
+          <li className="mini-nav-item"><a href="#">Login</a></li>
+        </ul>
+
+        <div id="site-logo">
+          <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}><img src="/images/logo.png" /></IndexLink>
+        </div>
+
+        <nav id="site-nav">
+          <li className="site-nav-item"><Link to="/products" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Shop</Link></li>
+          <li className="site-nav-item"><a href="/my-city/">My City</a></li>
+          <li className="site-nav-item"><Link to="/collections" activeClassName="active"  activeStyle={{fontWeight: 'bold'}}>Categories</Link></li>
+          <div id="site-nav-upload">
+            <img src="/images/upload.png" />
+          </div>
         </nav>
       </header>
     )

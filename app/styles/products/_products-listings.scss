@@ -1,16 +1,21 @@
-.product-item{
-  @include flex-grid-column(4, 10);
-  margin-bottom: rem-calc(10);
+.products-grid{
+  @include flex-grid-row();
 
-  .product-item-inner{
-    background-color: $white;
-    padding: rem-calc(15);
-  }
+  .product-item{
+    @include flex-grid-column(3, 10);
+    margin-bottom: rem-calc(10);
 
-  .product-item-image{
-    height: rem-calc(300);
-    width: 100%;
-    background-position: 0 0;
-    background-size: cover;
+    .product-item-inner{
+      background-color: $white;
+      padding: rem-calc(15);
+      border-radius: rem-calc(10);
+    }
+
+    .product-item-image{
+      height: rem-calc(200);
+      width: 100%;
+      background-position: center center;
+      background-size: cover;
+    }
   }
 }

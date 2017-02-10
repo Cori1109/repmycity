@@ -20,13 +20,14 @@ class Products extends React.Component {
   render() {
     let {products} = this.props;
 
-    console.log('big products:', products);
     if (products.length > 0) {
       return (
-        <div className="row">
-          {products.map(product => {
-            return <ProductItem key={product.key} addToCart={() => this.handleAddToCart(product)} id={product.attrs.product_id} title={product.attrs.title} image={product.selectedVariant.imageVariants[5].src} />
-          })}
+        <div className="container">
+          <div className="products-grid">
+            {products.map(product => {
+              return <ProductItem key={product.key} addToCart={() => this.handleAddToCart(product)} id={product.attrs.product_id} title={product.attrs.title} image={product.selectedVariant.imageVariants[4].src} />
+            })}
+          </div>
         </div>
       )
     }else{

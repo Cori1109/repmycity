@@ -1,0 +1,16 @@
+.products-carousel {
+  margin-bottom: rem-calc(60);
+
+  .products-carousel-item{
+    background-color: $white;
+    padding: rem-calc(15);
+
+    .product-item-image{
+      height: rem-calc(250);
+      width: 100%;
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}

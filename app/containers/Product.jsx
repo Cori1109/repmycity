@@ -31,23 +31,25 @@ class Product extends React.Component {
 
 
       return (
-        <div className="product-index">
-          <Link to="/products" className="button hollow">&lsaquo; Back to products</Link>
-          <h1 className="text-center">{title}</h1>
-          <p className="text-center"><img src={images[0].src} alt="" /></p>
-          <hr />
-          {/* <p>Current options:</p> */}
-          {/* {options.map(option => {
-            return <p>{option.name}</p>
-          })}
-          {images.map(image => {
-            return <img key={image.id} height="50" width="50" src={image.src} alt="" />
-          })} */}
-          <button
-            onClick={()=>{
-              dispatch(cartActions.startAddorUpdateCartItem(activeProduct.selectedVariant, 1));
-            }}
-            className="btn">Add To Cart</button>
+        <div className="container">
+          <div className="product-index">
+            <Link to="/products" className="button hollow">&lsaquo; Back to products</Link>
+            <h1 className="text-center">{title}</h1>
+            <p className="text-center"><img src={images[0].src} alt="" /></p>
+            <hr />
+            {/* <p>Current options:</p> */}
+            {/* {options.map(option => {
+              return <p>{option.name}</p>
+            })}
+            {images.map(image => {
+              return <img key={image.id} height="50" width="50" src={image.src} alt="" />
+            })} */}
+            <button
+              onClick={()=>{
+                dispatch(cartActions.startAddorUpdateCartItem(activeProduct.selectedVariant, 1));
+              }}
+              className="btn">Add To Cart</button>
+          </div>
         </div>
       )
     }else{
