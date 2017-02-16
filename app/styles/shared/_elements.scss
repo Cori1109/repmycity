@@ -2,3 +2,9 @@
 .button{
   font-weight: bold;
 }
+
+.button.add-to-cart{
+  border: 3px solid $grey50;
+  text-transform: uppercase;
+  padding: rem-calc(10 30);
+}

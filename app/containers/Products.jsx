@@ -24,28 +24,33 @@ class Products extends React.Component {
       return (
         <div className="container">
           <div className="row">
-            <div className="small-3 columns">
+            <div className="small-12 medium-3 columns">
               <nav className="products-nav">
-                <h2>Categories</h2>
+                <h4 className="products-nav__headline">Categories</h4>
                 <ul>
                   <li>City / state</li>
                   <li>Sports</li>
                   <li>Hobbies</li>
                   <li>Music</li>
                   <li>Animals</li>
+                  <li>Show all</li>
                 </ul>
 
-                <h2>Style</h2>
-                <ul>
-                  <li>City / state</li>
-                  <li>Sports</li>
-                  <li>Hobbies</li>
-                  <li>Music</li>
-                  <li>Animals</li>
-                </ul>
+                <h4 className="products-nav__headline">Style</h4>
+                <div className="products-nav__search">
+                  <input type="text" placeholder="Select style" />
+                  <button type="submit" className="products-nav__search-button"><i className="fa fa-search"></i></button>
+                </div>
+
+                <h4 className="products-nav__headline">Search</h4>
+                <div className="products-nav__search">
+                  <input type="text" placeholder="Enter keywords" />
+                  <button type="submit" className="products-nav__search-button"><i className="fa fa-search"></i></button>
+                </div>
+
               </nav>
             </div>
-            <div className="small-9 column">
+            <div className="small-12 medium-9 column">
               <div className="products-grid">
                 {products.map(product => {
                   return <ProductItem key={product.key} addToCart={() => this.handleAddToCart(product)} id={product.attrs.product_id} title={product.attrs.title} image={product.selectedVariant.imageVariants[4].src} />

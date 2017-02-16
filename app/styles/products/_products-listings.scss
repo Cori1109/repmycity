@@ -6,6 +6,36 @@
   text-shadow: 2px 2px 2px rgba($black, 0.4);
 }
 
+.products-nav{
+  .products-nav__headline{
+    text-transform: uppercase;
+    color: $primary-color;
+    font-weight: bold;
+    margin-top: rem-calc(30);
+    &:first-child{
+      margin-top: 0;
+    }
+  }
+  ul{
+    margin: 0;
+  }
+  li{
+    list-style-type: none;
+  }
+
+  .products-nav__search{
+    @include flex();
+    .products-nav__search-button{
+      width: rem-calc(60);
+      background-color: $primary-color;
+      color: $white;
+    }
+  }
+  input{
+    margin-bottom: 0;
+  }
+}
+
 .products-grid{
   @include flex-grid-row();
 

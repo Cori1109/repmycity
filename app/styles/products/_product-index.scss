@@ -1,2 +1,84 @@
-.product-index{
+.page-product{
+  .product-title{
+    text-transform: uppercase;
+    color: $grey40;
+    font-weight: bold;
+    font-size: rem-calc(30);
+  }
+
+  .product-info{
+    padding-left: rem-calc(20);
+    .product-info__headline{
+      color: $primary-color;
+      text-transform: uppercase;
+      font-size: rem-calc(16);
+      font-weight: bold;
+      border-bottom: 1px solid $primary-color;
+    }
+
+    // product styles
+    .product-style{
+      @include flex();
+      margin-bottom: rem-calc(15);
+      .product-style__button{
+        background-color: $primary-color;
+        width: rem-calc(60);
+        color: $white;
+        font-size: rem-calc(26);
+      }
+      input{
+        margin-bottom: 0;
+      }
+    }
+
+    // product sizes
+    .product-sizes{
+      @include flex();
+      justify-content: space-between;
+      list-style-type: none;
+      margin: 0 0 rem-calc(15) 0;
+      .product-size{
+        flex-basis: auto;
+        border: 1px solid $grey70;
+        padding: rem-calc(5 10);
+      }
+    }
+
+    // product price
+    .product-price{
+      color: $primary-color;
+      font-size: rem-calc(25);
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: rem-calc(30);
+    }
+
+    // product styles
+    .product-charity{
+      position: relative;
+      @include flex();
+      margin-bottom: rem-calc(50);
+      .product-charity__button{
+        background-color: $primary-color;
+        width: rem-calc(60);
+        color: $white;
+        font-size: rem-calc(26);
+      }
+      input{
+        margin-bottom: 0;
+      }
+      .product-charity__more-info{
+        position: absolute;
+        left: 0;
+        bottom: rem-calc(-24);
+        &, a{
+          color: $grey30;
+        }
+        a{
+          font-style: italic;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
