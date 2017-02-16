@@ -1,14 +1,24 @@
+.subpage {
+  #site-header{
+    background: #8f8e8a url('/images/background.jpg') center top no-repeat;
+    background-size: cover;
+  }
+}
+
 #site-header{
   position: fixed;
   top: 0;
   z-index: 90;
   width: 100%;
+  height: rem-calc(130);
 
   a{
     color: #cccccc;
   }
 
   .mini-nav{
+    position: relative;
+    z-index: 9;
     text-align: right;
     padding: rem-calc(5 10);
     .mini-nav-item{

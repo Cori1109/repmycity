@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
-let { connect } = require('react-redux');
+let {connect} = require('react-redux');
 let productActions = require('productActions');
 let cartActions = require('cartActions');
+import {browserHistory} from 'react-router';
 
 import Loader from 'Loader';
 
@@ -33,7 +34,7 @@ class Product extends React.Component {
       return (
         <div className="container">
           <div className="product-index">
-            <Link to="/products" className="button hollow">&lsaquo; Back to products</Link>
+            <button onClick={browserHistory.goBack} className="button hollow">&lsaquo; Back to products</button>
             <h1 className="text-center">{title}</h1>
             <p className="text-center"><img src={images[0].src} alt="" /></p>
             <hr />

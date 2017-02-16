@@ -9,17 +9,21 @@ class Footer extends React.Component {
   render() {
     return (
       <footer id="site-footer">
-        <nav className="main-nav">
+        <nav className="footer-nav">
           <li>
-            <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Home</IndexLink>
+            <Link to="/about" activeClassName="active">About</Link>
           </li>
           <li>
-            <Link to="/collections" activeClassName="active"  activeStyle={{fontWeight: 'bold'}}>Collections</Link>
+            <Link to="/products" activeClassName="active">Shop All</Link>
           </li>
           <li>
-            <Link to="/products" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Products</Link>
+            <Link to="/contact" activeClassName="active">Contact</Link>
+          </li>
+          <li>
+            <Link to="/upload" activeClassName="active">Upload Design</Link>
           </li>
         </nav>
+        <p>Lorem ipsum dolar sit amit. Sed dono avec.</p>
       </footer>
     )
   }

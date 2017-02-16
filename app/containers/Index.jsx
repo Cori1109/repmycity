@@ -29,6 +29,7 @@ class Index extends React.Component {
       autoplay: true,
       slidesToShow: 4,
       speed: 500,
+      arrows: false,
       lazyLoad: true,
       responsive: [{
         breakpoint: 1024,
@@ -66,8 +67,23 @@ class Index extends React.Component {
             })}
           </Slider>
 
+          <section className="section-callout">
+            <div className="container">
+              <h4 className="section-headline">Show your pride. Display your talents. <span className="font-white">Rep your city.</span></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam semper nulla vel elit gravida, vel placerat turpis convallis. Praesent eu lorem suscipit, gravida leo sed, luctus erat. Nullam consectetur, tortor a facilisis lobortis, velit massa mattis risus, eget imperdiet velit arcu non mauris. Mauris bibendum bibendum ligula, nec maximus sapien porta non.</p>
+              <div className="section-callout__cta-items">
+                <Link to={`/products`}><img src="/images/button-shop.png" alt="Shop now" /></Link>
+                <div className="search-box">
+                  <i className="fa fa-search" />
+                  <input tyep="text" placeholder="Keyword Search" />
+                </div>
+                <Link to={`/upload`}><img src="/images/button-upload.png" alt="Shop now" /></Link>
+              </div>
+            </div>
+          </section>
+
           <div className="container">
-            <h3>What's hot / What's new</h3>
+            <h3 className="products-grid-title">What's hot / What's new</h3>
             <div className="products-grid">
               {products.map(product => {
                 return <ProductItem key={product.key} addToCart={() => this.handleAddToCart(product)} id={product.attrs.product_id} title={product.attrs.title} image={product.selectedVariant.imageVariants[5].src} />

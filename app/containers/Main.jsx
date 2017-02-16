@@ -26,8 +26,10 @@ class Main extends React.Component{
       }
     };
 
+    let pageName = this.props.location.pathname.replace('/', '-').substr(1);
+
     return (
-      <div id="main">
+      <div id="main" className={`page-${pageName ? pageName + ' subpage' : 'home'}`}>
         <DocumentMeta {...meta} />
         <Header />
         <div id="main-container">

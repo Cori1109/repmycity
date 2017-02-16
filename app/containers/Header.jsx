@@ -10,10 +10,10 @@ class Header extends React.Component {
     return (
       <header id="site-header">
         <ul className="mini-nav">
-          <li className="mini-nav-item"><a href="#">About</a></li>
-          <li className="mini-nav-item"><a href="#">Order Status</a></li>
-          <li className="mini-nav-item"><a href="#">Map</a></li>
-          <li className="mini-nav-item"><a href="#">Login</a></li>
+          <li className="mini-nav-item"><Link to="/about" activeClassName="active">About</Link></li>
+          <li className="mini-nav-item"><Link to="/order-status" activeClassName="active">Order Status</Link></li>
+          <li className="mini-nav-item"><Link to="/map" activeClassName="active">Map</Link></li>
+          <li className="mini-nav-item"><Link to="/login" activeClassName="active">Login</Link></li>
         </ul>
 
         <div id="site-logo">
@@ -21,11 +21,11 @@ class Header extends React.Component {
         </div>
 
         <nav id="site-nav">
-          <li className="site-nav-item"><Link to="/products" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Shop</Link></li>
-          <li className="site-nav-item"><a href="/my-city/">My City</a></li>
-          <li className="site-nav-item"><Link to="/collections" activeClassName="active"  activeStyle={{fontWeight: 'bold'}}>Categories</Link></li>
+          <li className="site-nav-item"><Link to="/products" activeClassName="active">Shop</Link></li>
+          <li className="site-nav-item"><Link to="/my-city" activeClassName="active">My City</Link></li>
+          <li className="site-nav-item"><Link to="/collections" activeClassName="active">Categories</Link></li>
           <div id="site-nav-upload">
-            <img src="/images/upload.png" />
+            <Link to={`/upload`}><img src="/images/upload.png" /></Link>
           </div>
         </nav>
       </header>

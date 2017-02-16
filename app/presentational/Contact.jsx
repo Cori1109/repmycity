@@ -9,8 +9,8 @@ class Contact extends React.Component{
   render() {
     return (
       <section className="section">
-        <h1>Contact</h1>
         <div className="container">
+          <h1>Contact</h1>
         </div>
       </section>
     )
