@@ -41,6 +41,13 @@
         flex-basis: auto;
         border: 1px solid $grey70;
         padding: rem-calc(5 10);
+        cursor: pointer;
+        &:hover{
+          background-color: $grey90;
+        }
+        &.selected{
+          background-color: $grey70;
+        }
       }
     }
 

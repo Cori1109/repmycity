@@ -3,16 +3,18 @@
 // foundation
 @import "base/foundation-modules";
 
-// vendor
-@import "vendor/slick";
-@import "vendor/slick-theme";
-
-// Components
+// Helpers
 @import "shared/mixins";
 @import "shared/helper-classes";
 @import "shared/elements";
 @import "shared/forms";
 
+// vendor
+@import "vendor/slick";
+@import "vendor/slick-theme";
+@import "vendor/react-modal";
+
+// Components
 @import "buttons";
 @import "cart";
 

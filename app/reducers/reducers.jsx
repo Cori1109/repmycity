@@ -8,12 +8,24 @@ export var productsReducer = (state = {all: [], active: null}, action) => {
     case 'SET_ACTIVE_PRODUCT':
       return {
         ...state,
-        active: action.product
+        active: {
+          ...state.active,
+          fetched: true,
+          options: action.options
+        }
       };
     case 'CLEAR_ACTIVE_PRODUCT':
       return {
         ...state,
         active: null
+      };
+    case 'UPDATE_ACTIVE_PRODUCT_OPTIONS':
+      return {
+        ...state,
+        active: {
+          ...state.active,
+          options: action.options
+        }
       };
     default:
       return state;

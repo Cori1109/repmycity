@@ -1,0 +1,53 @@
+.ReactModal__Overlay{
+  background-color: rgba($black, 0.8) !important;
+  z-index: 1000;
+  @include flex();
+  @include flex-align(center, middle);
+
+  .ReactModal__Content{
+    position: relative;
+    background-color: $white;
+    opacity: 0;
+    padding: rem-calc(10);
+    max-width: 90vw;
+    @include transition(opacity 0.2s ease-in-out);
+    &, &:focus{
+      outline: none;
+    }
+
+    @include breakpoint(large){
+      padding: rem-calc(30 40);
+    }
+
+    .modal-headline{
+      color: $red;
+      font-weight: bold;
+    }
+
+    &.ReactModal__Content--after-open{
+      opacity: 1;
+    }
+    &.ReactModal__Content--before-close{
+      opacity: 0;
+    }
+
+    .close-modal-icon{
+      background-color: $white;
+      position: absolute;
+      top: rem-calc(-15);
+      right: rem-calc(-15);
+      font-size: rem-calc(20);
+      color: $primary-color;
+      padding: rem-calc(3);
+      width: rem-calc(35);
+      height: rem-calc(35);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    @include breakpoint(large){
+      min-width: rem-calc(400);
+      max-width: 50vw;
+    }
+  }
+}

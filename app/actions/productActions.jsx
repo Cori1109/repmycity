@@ -1,21 +1,5 @@
 import shopifyAPI from 'shopifyAPI';
 
-export var setActiveProduct = (id) => {
-  return (dispatch) => {
-    return shopifyAPI.client.fetchProduct(id).then((data) => {
-      let product = data || {};
-      let parsedProduct = {...product};
-      dispatch({ type: 'SET_ACTIVE_PRODUCT', product });
-    });
-  };
-};
-
-export var clearActiveProduct = () => {
-  return {
-    type: 'CLEAR_ACTIVE_PRODUCT'
-  };
-};
-
 // Add products to store
 export var startAddProducts = () => {
   return (dispatch) => {
@@ -50,5 +34,29 @@ export var preloadProductImages = () => {
       images[index].src = product.selectedVariant.imageVariants[4].src;
       return images[index];
     });
+  };
+};
+
+
+// set active product
+export var setActiveProduct = (options) => {
+  return {
+    type: 'SET_ACTIVE_PRODUCT',
+    options
+  };
+};
+
+// clear active product from redux
+export var clearActiveProduct = () => {
+  return {
+    type: 'CLEAR_ACTIVE_PRODUCT'
+  };
+};
+
+// update active product option
+export var updateActiveProductOptions = (options) => {
+  return {
+    type: 'UPDATE_ACTIVE_PRODUCT_OPTIONS',
+    options
   };
 };
