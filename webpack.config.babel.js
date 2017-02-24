@@ -157,10 +157,10 @@ const PROD_PLUGINS = [
 
 // Webpack plugins unique to the development build:
 const DEV_PLUGINS = [
-  new webpack.HotModuleReplacementPlugin(),
-  new StatsPlugin('stats.json', {
-    chunkModules: true
-  })
+  // new webpack.HotModuleReplacementPlugin(),
+  // new StatsPlugin('stats.json', {
+  //   chunkModules: true
+  // })
 ];
 
 // Webpack field-value pairs re: webpack-dev-server:
@@ -174,16 +174,17 @@ const PROD_CONFIG = {
 const DEV_CONFIG = {
   output: {
     filename: '[name].[hash].js'
-  },
-  devServer: {
-    contentBase: path.join(__dirname, 'public'),
-    open: true,
-    host: 'localhost',
-    hot: true,
-    inline: true,
-    port: 3000,
-    historyApiFallback: true
   }
+  // ,
+  // devServer: {
+  //   contentBase: path.join(__dirname, 'public'),
+  //   open: true,
+  //   host: 'localhost',
+  //   hot: true,
+  //   inline: true,
+  //   port: 3000,
+  //   historyApiFallback: true
+  // }
 };
 
 // Final Webpack configuration object constructed
