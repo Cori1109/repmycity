@@ -1,13 +1,13 @@
 {
-  "name": "boilerplate",
+  "name": "RMC",
   "version": "1.0.0",
-  "description": "Simple react app",
+  "description": "RepMyCity: React and Redux eCommerce based on Shopify Buy SDK",
   "main": "index.js",
   "scripts": {
     "test": "karma start",
     "clean": "rimraf public",
-    "build": "yarn clean && webpack",
     "build:prod": "NODE_ENV=production webpack",
+    "build": "yarn clean && webpack",
     "serve": "webpack-dev-server"
   },
   "author": "Julian Jorgensen",
