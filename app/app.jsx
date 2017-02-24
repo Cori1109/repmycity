@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 import shopifyAPI from 'shopifyAPI';
-import 'font-awesome-sass-loader';
+import 'applicationStyles';
 
 let cartActions = require('cartActions');
 let productActions = require('productActions');
 let collectionActions = require('collectionActions');
 let store = require('configureStore').configure();
-import router from 'app/router/';
+import router from './router/router.jsx';
 
 
 // subscribe to the redux store
@@ -34,7 +33,7 @@ if(localStorage.getItem('lastCartId')) {
 }
 
 // App css
-require('style!css!sass!applicationStyles')
+// require('style!css!sass!applicationStyles')
 
 ReactDOM.render(
   <Provider store={store}>

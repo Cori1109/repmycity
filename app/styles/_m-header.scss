@@ -26,6 +26,13 @@
       margin-left: rem-calc(10);
       text-transform: uppercase;
       font-size: 0.8rem;
+      &.mini-nav-item-cart{
+        position: relative;
+        bottom: -2px;
+        color: $grey80;
+        font-size: 1.2em;
+        cursor: pointer;
+      }
     }
   }
 

@@ -1,6 +1,6 @@
 // foundation settings and core
 @import "base/foundation-settings";
-@import "foundation";
+@import "~foundation-sites/scss/foundation";
 
 // foundatin modules
 @include foundation-global-styles;
