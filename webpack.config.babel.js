@@ -112,8 +112,6 @@ const BASE_CONFIG = {
       template: 'app/index.html'
     })
   ],
-  cache: true,
-  watch: true,
   devtool: `${IS_PRODUCTION ? 'inline' : 'cheap-eval'}-source-map`,
   resolve: {
     modules: [
@@ -157,10 +155,10 @@ const PROD_PLUGINS = [
 
 // Webpack plugins unique to the development build:
 const DEV_PLUGINS = [
-  // new webpack.HotModuleReplacementPlugin(),
-  // new StatsPlugin('stats.json', {
-  //   chunkModules: true
-  // })
+  new webpack.HotModuleReplacementPlugin(),
+  new StatsPlugin('stats.json', {
+    chunkModules: true
+  })
 ];
 
 // Webpack field-value pairs re: webpack-dev-server:
