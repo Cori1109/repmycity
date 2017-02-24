@@ -174,17 +174,17 @@ const PROD_CONFIG = {
 const DEV_CONFIG = {
   output: {
     filename: '[name].[hash].js'
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    open: true,
+    host: 'localhost',
+    hot: true,
+    inline: true,
+    noInfo: false,
+    port: 3000,
+    historyApiFallback: true
   }
-  // ,
-  // devServer: {
-  //   contentBase: path.join(__dirname, 'public'),
-  //   open: true,
-  //   host: 'localhost',
-  //   hot: true,
-  //   inline: true,
-  //   port: 3000,
-  //   historyApiFallback: true
-  // }
 };
 
 // Final Webpack configuration object constructed
