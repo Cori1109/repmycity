@@ -35,7 +35,8 @@ const BASE_CONFIG = {
     vendor: VENDOR_LIBS
   },
   output: {
-    path: path.join(__dirname, 'public')
+    path: path.join(__dirname, 'public'),
+    publicPath: 'public/'
   },
   module: {
     rules: [
@@ -181,6 +182,7 @@ const DEV_CONFIG = {
     hot: true,
     inline: true,
     port: 3000,
+    historyApiFallback: true
   }
 };
 

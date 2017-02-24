@@ -1,10 +1,7 @@
 import React from 'react';
 let {connect} = require('react-redux');
 let actions = require('cartActions');
-
 import Loader from 'Loader';
-
-import Product from 'Product';
 import ProductItem from 'ProductItem';
 
 class Products extends React.Component {

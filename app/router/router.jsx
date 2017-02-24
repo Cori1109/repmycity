@@ -35,15 +35,11 @@ browserHistory.listen((location) => {
 export default (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
-      <IndexRoute component={Index} />
-      <Route path='collections'>
-        <Route path='collection/:collectionId' component={Collection} />
-        <IndexRoute component={Collections} />
-      </Route>
-      <Route path='products'>
-        <Route path="product/:productId" component={Product} />
-        <IndexRoute component={Products} />
-      </Route>
+      <IndexRoute path="/" component={Index} />
+      <Route path="products" component={Products} />
+      <Route path="product/:productId" component={Product} />
+      <Route path='collections' component={Collections} />
+      <Route path='collection/:collectionId' component={Collection} />
       <Route path="my-city" component={Products} />
       <Route path="upload" component={Upload} />
       <Route path="order-status" component={OrderStatus} />
