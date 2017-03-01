@@ -1,11 +1,11 @@
-import webpack from 'webpack';
-import path from 'path';
-import Merge from 'webpack-merge';
-import StatsPlugin from 'stats-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import HTMLWebpackPlugin from 'html-webpack-plugin';
-import autoprefixer from 'autoprefixer';
-import PostCSS from './postcss.config';
+let webpack = require('webpack');
+let path = require('path');
+let Merge = require('webpack-merge');
+let StatsPlugin = require('stats-webpack-plugin');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let HTMLWebpackPlugin = require('html-webpack-plugin');
+let autoprefixer = require('autoprefixer');
+let PostCSS = require('./postcss.config');
 
 // production or development environment?
 const IS_PRODUCTION = (process.env.NODE_ENV === 'production');
