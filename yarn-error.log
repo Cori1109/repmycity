@@ -1,0 +1,103 @@
+Arguments: 
+  /Users/julianjorgensen/.nvm/versions/node/v6.10.0/bin/node /Users/julianjorgensen/.yarn/bin/yarn.js install
+
+PATH: 
+  /Users/julianjorgensen/.nvm/versions/node/v6.10.0/bin:/Users/julianjorgensen/.yarn/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  0.21.3
+
+Node version: 
+  6.10.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "RMC",
+    "version": "1.0.0",
+    "description": "RepMyCity: React and Redux eCommerce based on Shopify Buy SDK",
+    "scripts": {
+      "test": "karma start",
+      "clean": "rimraf public",
+      "build:prod": "NODE_ENV=production webpack",
+      "build": "webpack",
+      "dev": "yarn clean && webpack",
+      "serve": "webpack-dev-server"
+    },
+    "author": "Julian Jorgensen",
+    "license": "MIT",
+    "dependencies": {
+      "font-awesome": "^4.7.0",
+      "font-awesome-sass-loader": "^1.0.3",
+      "font-awesome-webpack": "^0.0.4",
+      "react": "^15.4.2",
+      "react-addons-test-utils": "^15.4.2",
+      "react-document-meta": "^2.1.1",
+      "react-dom": "^15.4.2",
+      "react-facebook": "^2.2.5",
+      "react-ga": "^2.1.2",
+      "react-markdown": "^2.4.4",
+      "react-modal": "^1.6.5",
+      "react-redux": "^5.0.2",
+      "react-router": "^3.0.2",
+      "react-slick": "^0.14.6",
+      "react-youtube": "^7.3.0",
+      "redux": "^3.6.0",
+      "redux-thunk": "^2.2.0",
+      "shopify-api-node": "^2.4.0",
+      "shopify-buy": "^0.6.1"
+    },
+    "devDependencies": {
+      "autoprefixer": "^6.7.5",
+      "babel-core": "^6.5.1",
+      "babel-loader": "^6.2.2",
+      "babel-preset-env": "^1.1.8",
+      "babel-preset-react": "^6.5.0",
+      "babel-preset-stage-0": "^6.5.0",
+      "css-loader": "^0.26.2",
+      "expect": "^1.14.0",
+      "express": "^4.13.4",
+      "extract-text-webpack-plugin": "2.0.0-beta.4",
+      "file-loader": "^0.10.0",
+      "foundation-sites": "^6.3.0",
+      "html-webpack-plugin": "^2.28.0",
+      "image-webpack-loader": "^3.2.0",
+      "jquery": "^3.1.1",
+      "json-loader": "^0.5.4",
+      "karma": "^1.4.0",
+      "karma-chrome-launcher": "^2.0.0",
+      "karma-mocha": "^1.3",
+      "karma-mocha-reporter": "^2.2.1",
+      "karma-sourcemap-loader": "^0.3.7",
+      "karma-webpack": "^2.0.1",
+      "lodash": "^4.17.4",
+      "mocha": "^3.2.0",
+      "node-sass": "^4.3.0",
+      "postcss-loader": "^1.3.0",
+      "rimraf": "^2.6.0",
+      "sass-loader": "^6.0.2",
+      "stats-webpack-plugin": "^0.4.3",
+      "style-loader": "^0.13.1",
+      "url-loader": "^0.5.7",
+      "webpack": "^2.2.1",
+      "webpack-dev-server": "^2.4.1",
+      "webpack-merge": "^3.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: connect ECONNABORTED 104.16.62.173:443 - Local (0.0.0.0:0)
+      at Object.exports._errnoException (util.js:1022:11)
+      at exports._exceptionWithHostPort (util.js:1045:20)
+      at connect (net.js:881:16)
+      at net.js:1010:7
+      at GetAddrInfoReqWrap.asyncCallback [as callback] (dns.js:62:16)
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:81:10)
