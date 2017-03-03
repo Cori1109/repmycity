@@ -27,7 +27,7 @@ class Product extends React.Component {
   componentWillMount(){
     this.dispatch = this.props.dispatch;
 
-    shopifyAPI.client.fetchProduct(this.props.params.productId).then((data) => {
+    shopifyAPI.buyClient.fetchProduct(this.props.params.productId).then((data) => {
       let product = data || {};
       this.product = product;
       this.dispatch(productActions.setActiveProduct(product.options));

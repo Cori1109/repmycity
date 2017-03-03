@@ -2,7 +2,7 @@ import shopifyAPI from 'shopifyAPI';
 
 export var setActiveCollection = (id) => {
   return (dispatch) => {
-    return shopifyAPI.client.fetchCollection(id).then((data) => {
+    return shopifyAPI.buyClient.fetchCollection(id).then((data) => {
       let collection = data || {};
       let parsedCollection = {...collection};
       dispatch({ type: 'SET_ACTIVE_COLLECTION', parsedCollection });
@@ -13,7 +13,7 @@ export var setActiveCollection = (id) => {
 // Add collections to store
 export var startAddCollections = () => {
   return (dispatch) => {
-    return shopifyAPI.client.fetchAllCollections().then((data) => {
+    return shopifyAPI.buyClient.fetchAllCollections().then((data) => {
       var collections = data || {};
       var parsedCollections = [];
 

@@ -3,7 +3,7 @@ import shopifyAPI from 'shopifyAPI';
 // Add products to store
 export var startAddProducts = () => {
   return (dispatch) => {
-    return shopifyAPI.client.fetchAllProducts().then((data) => {
+    return shopifyAPI.buyClient.fetchAllProducts().then((data) => {
       let products = data || {};
       let parsedProducts = products.map((product, index) => {
         let updatedProduct = [];

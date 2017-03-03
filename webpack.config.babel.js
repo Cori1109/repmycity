@@ -36,7 +36,7 @@ const BASE_CONFIG = {
   },
   output: {
     path: path.join(__dirname, 'public'),
-    publicPath: 'public/'
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -181,7 +181,7 @@ const DEV_CONFIG = {
     hot: true,
     inline: true,
     noInfo: false,
-    port: 3000,
+    port: 8080,
     historyApiFallback: true
   }
 };

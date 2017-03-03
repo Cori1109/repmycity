@@ -4,17 +4,18 @@ let store = require('configureStore').configure();
 
 class shopifyAPI {
   constructor() {
-    this.client = ShopifyBuy.buildClient({
+    this.buyClient = ShopifyBuy.buildClient({
       apiKey: 'e0ab8cf9b5a30cee2616bf151a56c763',
       domain: 'rmc-preview.myshopify.com',
       appId: '6'
     });
+
     this.cart = {};
   }
 
   createCart() {
     return new Promise((resolve, reject) => {
-      this.client.createCart().then((newCart) => {
+      this.buyClient.createCart().then((newCart) => {
         localStorage.setItem('lastCartId', newCart.id);
         console.log('created new cart', newCart);
         // set singleton cart object to reference shopify cart
@@ -34,7 +35,7 @@ class shopifyAPI {
 
   restoreCart() {
     return new Promise((resolve, reject) => {
-      this.client.fetchCart(localStorage.getItem('lastCartId')).then((remoteCart) => {
+      this.buyClient.fetchCart(localStorage.getItem('lastCartId')).then((remoteCart) => {
         // set singleton cart object to reference shopify cart
         this.cart = remoteCart;
 

@@ -21,6 +21,7 @@
     "react-addons-test-utils": "^15.4.2",
     "react-document-meta": "^2.1.1",
     "react-dom": "^15.4.2",
+    "react-facebook": "^2.2.5",
     "react-ga": "^2.1.2",
     "react-markdown": "^2.4.4",
     "react-modal": "^1.6.5",
@@ -30,6 +31,7 @@
     "react-youtube": "^7.3.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
+    "shopify-api-node": "^2.4.0",
     "shopify-buy": "^0.6.1"
   },
   "devDependencies": {
