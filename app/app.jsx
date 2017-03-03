@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import shopifyAPI from 'shopifyAPI';
-import 'applicationStyles';
+// import 'applicationStyles';
 
 let cartActions = require('cartActions');
 let productActions = require('productActions');
