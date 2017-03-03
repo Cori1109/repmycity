@@ -2,7 +2,7 @@ import React from 'react';
 import Header from 'Header';
 import Footer from 'Footer';
 import DocumentMeta from 'react-document-meta';
-import Cart from 'cart';
+import Cart from 'Cart';
 
 class Main extends React.Component{
   constructor(props){
