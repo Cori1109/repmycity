@@ -36,7 +36,7 @@ const BASE_CONFIG = {
   },
   output: {
     path: path.join(__dirname, 'public'),
-    publicPath: 'public/'
+    publicPath: '/'
   },
   module: {
     rules: [
