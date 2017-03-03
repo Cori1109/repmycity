@@ -35,8 +35,7 @@ const BASE_CONFIG = {
     vendor: VENDOR_LIBS
   },
   output: {
-    path: path.join(__dirname, 'public'),
-    publicPath: '/'
+    path: path.join(__dirname, 'public')
   },
   module: {
     rules: [
@@ -44,75 +43,14 @@ const BASE_CONFIG = {
         test: /\.jsx?$/i,
         exclude: /node_modules/,
         use: 'babel-loader'
-      },
-      {
-        test: /\.scss$/,
-        loader: extractSass.extract({
-          loader: [
-            {
-              loader: 'css-loader?-svgo',
-              options: {
-                minimize: IS_PRODUCTION ? true : false,
-                sourceMap: IS_PRODUCTION ? false : true
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: PostCSS
-            },
-            {
-              loader: 'sass-loader'
-            }
-          ],
-          // use style-loader in development
-          fallbackLoader: 'style-loader'
-        })
-      },
-      {
-        test: /\.json$/i,
-        use: 'json'
-      },
-      {
-        test: /\.pdf$/i,
-        use: 'file?name=/docs/[name].[ext]'
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [
-          {
-            loader: 'url',
-            options: { limit: 40000 }
-          },
-          'file?name=/images/[name].[ext]',
-          'image-webpack-loader'
-        ]
-      },
-      {
-        test: /\.woff$/,
-        use: 'url?limit=10000&mimetype=application/font-woff&name=[path][name].[ext]'
-      },
-      {
-        test: /\.woff2$/,
-        use: 'url?limit=10000&mimetype=application/font-woff2&name=[path][name].[ext]'
       }
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest'],
-      minChunks: Infinity
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
-    extractSass,
     new HTMLWebpackPlugin({
       template: 'app/index.html'
     })
   ],
-  devtool: `${IS_PRODUCTION ? 'inline' : 'cheap-eval'}-source-map`,
   resolve: {
     modules: [
       'node_modules',
@@ -141,32 +79,15 @@ const BASE_CONFIG = {
 
 // Webpack plugins unique to the production build:
 const PROD_PLUGINS = [
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      screw_ie8: true,
-      warnings: false
-    },
-    output: {
-      comments: false
-    }
-  }),
-  new webpack.optimize.AggressiveMergingPlugin()
 ];
 
 
 // Webpack plugins unique to the development build:
 const DEV_PLUGINS = [
-  new webpack.HotModuleReplacementPlugin(),
-  new StatsPlugin('stats.json', {
-    chunkModules: true
-  })
 ];
 
 // Webpack field-value pairs re: webpack-dev-server:
 const PROD_CONFIG = {
-  output: {
-    filename: '[name].min.[hash].js'
-  }
 };
 
 // Webpack field-value pairs re: webpack-dev-server:
