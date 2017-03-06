@@ -6,6 +6,9 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import PostCSS from './postcss.config';
+import Dotenv from 'dotenv-webpack';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+
 
 // production or development environment?
 const IS_PRODUCTION = (process.env.NODE_ENV === 'production');
@@ -98,6 +101,12 @@ const BASE_CONFIG = {
     ]
   },
   plugins: [
+    new CopyWebpackPlugin([
+      {
+        context: 'app',
+        from: 'assets'
+      }
+    ]),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],
       minChunks: Infinity
@@ -159,6 +168,9 @@ const DEV_PLUGINS = [
   new webpack.HotModuleReplacementPlugin(),
   new StatsPlugin('stats.json', {
     chunkModules: true
+  }),
+  new Dotenv({
+    path: './.env' // if not simply .env
   })
 ];
 

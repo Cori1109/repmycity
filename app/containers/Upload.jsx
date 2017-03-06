@@ -15,10 +15,12 @@ class Upload extends React.Component {
   render() {
     let {dispatch} = this.props;
 
+    console.log('fb app id: ', process.env.FB_APP_ID);
+
     return (
 
       <div className="container text-center">
-        <FacebookProvider appID="170767116762303">
+        <FacebookProvider appID={process.env.FB_APP_ID}>
           <Login scope="email" onResponse={this.onFacebookResponse.bind(this)}>
             <span>Login via Facebook</span>
           </Login>
