@@ -7,8 +7,7 @@
     "test": "karma start",
     "clean": "rimraf public",
     "build:prod": "NODE_ENV=production webpack",
-    "build": "webpack",
-    "dev": "yarn clean && webpack",
+    "build": "yarn clean && webpack",
     "serve": "webpack-dev-server"
   },
   "author": "Julian Jorgensen",
