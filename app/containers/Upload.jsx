@@ -2,8 +2,6 @@ import React from 'react';
 import {Link} from 'react-router';
 let {connect} = require('react-redux');
 import FacebookProvider, { Login } from 'react-facebook';
-import axios from 'axios';
-import Shopify from 'shopify-promise-2';
 
 class Upload extends React.Component {
   constructor(){
