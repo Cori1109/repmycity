@@ -13,6 +13,7 @@
   "author": "Julian Jorgensen",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.15.3",
     "copy-webpack-plugin": "^4.0.1",
     "dotenv-webpack": "^1.4.2",
     "font-awesome": "^4.7.0",
@@ -33,7 +34,8 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "shopify-api-node": "^2.4.0",
-    "shopify-buy": "^0.6.1"
+    "shopify-buy": "^0.6.1",
+    "shopify-promise-2": "^1.0.5"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.5",
