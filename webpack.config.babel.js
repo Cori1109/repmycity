@@ -9,9 +9,9 @@ import PostCSS from './postcss.config';
 import Dotenv from 'dotenv-webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
-
-// production or development environment?
-const IS_PRODUCTION = (process.env.NODE_ENV === 'production');
+// define environment constants
+const NODE_ENV = (process.env.NODE_ENV || 'development');
+const IS_PRODUCTION = (NODE_ENV === 'production');
 
 // Extract sass into separate file
 const extractSass = new ExtractTextPlugin({
@@ -107,6 +107,10 @@ const BASE_CONFIG = {
         from: 'assets'
       }
     ]),
+    new webpack.DefinePlugin({
+      // Dynamically access local environment variables based on the environment
+      ENV: JSON.stringify(require('./config/' + NODE_ENV + '.config'))
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],
       minChunks: Infinity
@@ -168,9 +172,6 @@ const DEV_PLUGINS = [
   new webpack.HotModuleReplacementPlugin(),
   new StatsPlugin('stats.json', {
     chunkModules: true
-  }),
-  new Dotenv({
-    path: './.env' // if not simply .env
   })
 ];
 
