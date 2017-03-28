@@ -1,7 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
 import Merge from 'webpack-merge';
-import StatsPlugin from 'stats-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
@@ -12,6 +11,11 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 // define environment constants
 const NODE_ENV = (process.env.NODE_ENV || 'development');
 const IS_PRODUCTION = (NODE_ENV === 'production');
+
+// load webpack stats plugin in dev
+if (!IS_PRODUCTION){
+  import StatsPlugin from 'stats-webpack-plugin';
+}
 
 // Extract sass into separate file
 const extractSass = new ExtractTextPlugin({
