@@ -1,5 +1,4 @@
 module.exports = {
-  NODE_ENV: "production",
   FB_APP_ID: "170767116762303",
   SHOPIFY_BUY_API: "e0ab8cf9b5a30cee2616bf151a56c763",
   SHOPIFY_BUY_DOMAIN: "rmc-preview.myshopify.com",

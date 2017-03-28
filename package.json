@@ -1,6 +1,6 @@
 {
   "name": "RMC",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "RepMyCity: React and Redux eCommerce based on Shopify Buy SDK",
   "main": "index.js",
   "scripts": {
@@ -8,10 +8,14 @@
     "clean": "rimraf public",
     "build:prod": "NODE_ENV=production webpack",
     "build": "yarn clean && webpack",
-    "serve": "webpack-dev-server"
+    "serve": "webpack-dev-server",
+    "start": "node server.js"
   },
   "author": "Julian Jorgensen",
   "license": "MIT",
+  "engines": {
+    "node": "7.4.0"
+  },
   "dependencies": {
     "axios": "^0.15.3",
     "copy-webpack-plugin": "^4.0.1",

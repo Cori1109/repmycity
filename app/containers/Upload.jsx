@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 let {connect} = require('react-redux');
 import FacebookProvider, { Login } from 'react-facebook';
+import axios from 'axios';
 
 class Upload extends React.Component {
   constructor(){
@@ -23,11 +24,11 @@ class Upload extends React.Component {
     console.log('Shopify shop name: ', ENV.SHOPIFY_SHOP_NAME);
     console.log('Shopify api access tokenn: ', ENV.SHOPIFY_API_ACCESS_TOKEN);
 
-    // axios.get('https://3f65ac6bcc5e4bb064776dc47b464c8f:326d1ba3916b9c719a848c9a9999fa5c@rmc-preview.myshopify.com/admin/orders.json').then((data) => {
-    //   // Respond to the express call
-    //   // res.json(data);
-    //   console.log('data: ', data);
-    // });
+    axios.get('https://<app-key>:<app-password>@rmc-preview.myshopify.com/admin/orders.json').then((data) => {
+      // Respond to the express call
+      // res.json(data);
+      console.log('data: ', data);
+    });
 
     return (
 
