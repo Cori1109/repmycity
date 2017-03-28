@@ -9,14 +9,14 @@
     "build:prod": "NODE_ENV=production webpack",
     "build": "yarn clean && webpack",
     "serve": "webpack-dev-server",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "webpack"
   },
   "author": "Julian Jorgensen",
   "license": "MIT",
   "engines": {
     "node": "7.4.0"
   },
-  "heroku-postbuild": "webpack",
   "dependencies": {
     "axios": "^0.15.3",
     "copy-webpack-plugin": "^4.0.1",
