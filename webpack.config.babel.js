@@ -6,7 +6,6 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import PostCSS from './postcss.config';
-import Dotenv from 'dotenv-webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 // define environment constants

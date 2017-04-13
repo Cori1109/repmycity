@@ -1,40 +1,26 @@
-var express = require('express');
-var app = express();
+let express = require('express');
+let app = express();
+let logger = require('morgan');
 
+// Set port
 app.set('port', (process.env.PORT || 5000));
 
+// Set static folder
 app.use(express.static(__dirname + '/public'));
 
+// Setting up basic middleware for all Express requests
+app.use(logger('dev')); // Log requests to API using morgan
+
+// Serve the index file
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/public/index.html');
 });
 
+// Shopify routes
+let shopify = require('./routes/shopify');
+app.use('/shopify', shopify);
+
+// Listen to port
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-
-// const path = require('path');
-// var express = require('express');
-//
-// // Create our app
-// var app = express();
-// const PORT = process.env.PORT || 3000;
-//
-// app.use(function (req, res, next){
-//   if (req.headers['x-forwarded-proto'] === 'https') {
-//     res.redirect('http://' + req.hostname + req.url);
-//   } else {
-//     next();
-//   }
-// });
-//
-// app.use(express.static(path.join(__dirname, 'public')));
-//
-// app.get('*', function(req, res) {
-//   response.render('public/index.html');
-// });
-//
-// app.listen(PORT, function () {
-//   console.log('Express server is up on port ' + PORT);
-// });
