@@ -66,7 +66,7 @@ class Index extends React.Component {
               )
             })}
           </Slider>
-
+ 
           <section className="section-callout">
             <div className="container">
               <h4 className="section-headline">Show your pride. Display your talents. <span className="font-white">Rep your city.</span></h4>

@@ -108,7 +108,8 @@ const BASE_CONFIG = {
     ]),
     new webpack.DefinePlugin({
       // Dynamically access local environment variables based on the environment
-      ENV: JSON.stringify(require('./config/' + NODE_ENV + '.config'))
+      ENV_CONFIG: JSON.stringify(require('./config/' + NODE_ENV + '.config')),
+      NODE_ENV: JSON.stringify(NODE_ENV)
     }),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],

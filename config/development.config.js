@@ -1,6 +1,5 @@
 module.exports = {
   FB_APP_ID: "170767116762303",
   SHOPIFY_SHOP: "rmc-preview",
-  SHOPIFY_API_KEY: "3f65ac6bcc5e4bb064776dc47b464c8f",
-  ACCESS_TOKEN: "326d1ba3916b9c719a848c9a9999fa5c"
+  SHOPIFY_BUY_API_KEY: "e0ab8cf9b5a30cee2616bf151a56c763"
 };

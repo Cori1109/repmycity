@@ -1,0 +1,22 @@
+.preview{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('/images/01-front-highlights-forwhite-1.png') center center no-repeat;
+  background-size: contain;
+  height: rem-calc(500);
+  width: rem-calc(500);
+}
+
+.dropzone{
+  height: rem-calc(220);
+  width: rem-calc(200);
+  border: 2px dashed black;
+
+  &.active{
+    border-color: green;
+  }
+
+  &.accepted{
+  }
+}
