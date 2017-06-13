@@ -4,6 +4,7 @@ let {connect} = require('react-redux');
 import Dropzone from 'react-dropzone';
 import FacebookProvider, { Login } from 'react-facebook';
 import axios from 'axios';
+import Rnd from 'react-rnd';
 
 class Upload extends React.Component {
   constructor(){
@@ -11,7 +12,18 @@ class Upload extends React.Component {
 
     this.state = {
       file: null,
-      dropzoneActive: false
+      dropzoneActive: false,
+      shirtStyles: [
+        {
+          name: 'Male T-shirt',
+          image: '01-front-highlights-forwhite-1.png'
+        },
+        {
+          name: 'Female T-shirt',
+          image: '01-anvil-880-front-shadows.png'
+        }
+      ],
+      activeShirtStyle: 0
     }
   }
 
@@ -53,6 +65,8 @@ class Upload extends React.Component {
 
   render() {
     let {dispatch} = this.props;
+    let {file, shirtStyles, activeShirtStyle, dropzoneActive} = this.state;
+    let dropzoneRef;
 
     axios.get('/shopify').then((data) => {
       console.log('data: ', data);
@@ -63,40 +77,65 @@ class Upload extends React.Component {
         <div className="row">
           <div className="small-3">
             <label for="shirt-style">Select shirt style</label>
-            <select id="shirt-style">
-              <option value="male">Male T-Shirt</option>
-              <option value="female">Female T-Shirt</option>
+            <select id="shirt-style" onChange={(event) => {
+              this.setState({activeShirtStyle: event.target.value});
+            }}>
+              {shirtStyles.map((shirt, index) => {
+                return <option value={index}>{shirt.name}</option>
+              })}
             </select>
+
+            <label for="shirt-color">Change shirt color</label>
+            <div className="shirt-colors">
+              <div className="shirt-color blue"></div>
+              <div className="shirt-color black"></div>
+              <div className="shirt-color white"></div>
+              <div className="shirt-color blue"></div>
+              <div className="shirt-color black"></div>
+              <div className="shirt-color white"></div>
+              <div className="shirt-color blue"></div>
+              <div className="shirt-color black"></div>
+              <div className="shirt-color white"></div>
+            </div>
+
+            <label for="add-artwork">Add your artwork</label>
+            <button type="button" className="button" onClick={() => { dropzoneRef.open() }}>Upload artwork</button>
           </div>
           <div className="small-8 small-offset-1">
-            <div className="preview">
+            <div className="preview" style={{backgroundImage: `url('/images/${shirtStyles[activeShirtStyle].image}')`}}>
               <Dropzone
+                disableClick={file ? true : false}
                 onDrop={this.onDrop.bind(this)}
                 onDragEnter={this.onDragEnter.bind(this)}
                 onDragLeave={this.onDragLeave.bind(this)}
                 multiple={false}
-                className={`dropzone ${this.state.dropzoneActive ? 'active' : ''} ${this.state.file ? 'accepted' : ''}`}
+                className={`dropzone ${dropzoneActive ? 'active' : ''} ${file ? 'accepted' : ''}`}
+                ref={(node) => { dropzoneRef = node; }}
               >
-                {({ isDragActive, isDragReject, acceptedFiles, rejectedFiles }) => {
-                  if (isDragReject) {
-                    return "This file is not supported. Please upload a JPG or PNG image.";
-                  }
-                  return acceptedFiles.length ? <img src={this.state.file} /> : "Drop your artwork here.";
-                }}
+                <Rnd
+                  default={{
+                    x: 0,
+                    y: 0,
+                    width: 200,
+                    maxWidth: 300,
+                  }}
+                  bounds="parent"
+                >
+                  <img src={file} />
+                </Rnd>
               </Dropzone>
             </div>
-
           </div>
         </div>
 
 
-        <FacebookProvider appID={ENV_CONFIG.FB_APP_ID}>
+        {/* <FacebookProvider appID={ENV_CONFIG.FB_APP_ID}>
           <Login scope="email" onResponse={this.onFacebookResponse.bind(this)}>
             <span>Login via Facebook</span>
           </Login>
         </FacebookProvider>
 
-        <img src="/images/upload-placeholder.png" />
+        <img src="/images/upload-placeholder.png" /> */}
       </div>
     )
   }

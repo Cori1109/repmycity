@@ -2,21 +2,45 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('/images/01-front-highlights-forwhite-1.png') center center no-repeat;
+  background-position: center center;
+  background-repeat: no-repeat;
   background-size: contain;
   height: rem-calc(500);
   width: rem-calc(500);
 }
 
 .dropzone{
-  height: rem-calc(220);
+  height: rem-calc(260);
   width: rem-calc(200);
-  border: 2px dashed black;
+  border: 2px dashed $grey20;
 
   &.active{
     border-color: green;
   }
 
   &.accepted{
+  }
+
+  img{
+    -webkit-user-drag: none;
+  }
+}
+
+.shirt-colors{
+  .shirt-color{
+    display: inline-block;
+    width: rem-calc(25);
+    height: rem-calc(25);
+    border-radius: 50%;
+    margin-right: rem-calc(5);
+    &.white{
+      border: 1px solid black;
+    }
+    &.blue{
+      background-color: #09AAE3;
+    }
+    &.black{
+      background-color: black;
+    }
   }
 }

@@ -1,6 +1,15 @@
 let express = require('express');
 let router = express.Router();
 let Shopify = require('shopify-api-node');
+let fs = require('fs');
+
+// function to encode file data to base64 encoded string
+function base64_encode(file) {
+  // read binary data
+  let bitmap = fs.readFileSync(file);
+  // convert binary data to base64 encoded string
+  return new Buffer(bitmap).toString('base64');
+}
 
 // Environment and variables
 const NODE_ENV = (process.env.NODE_ENV || 'development');
@@ -18,9 +27,30 @@ const shopify = new Shopify({
 router.route('/')
   .get(function (req, res) {
     console.log('getting data from Shopify...');
-    // shopify.product.list({ limit: 5 })
-    //   .then(orders => console.log(orders))
-    //   .catch(err => console.error(err));
+    shopify.product.list({ limit: 5 })
+      .then(orders => console.log(orders))
+      .catch(err => console.error(err));
+  });
+
+// Create new product
+router.route('/new_product')
+  .post(function (req, res) {
+    shopify.product.create({
+      title: 'test prod1'
+    })
+    .then(product => console.log('product created: ', product))
+    .catch(err => console.error(err));
+  });
+
+// Create new product image
+router.route('/new_product_image')
+  .post(function (req, res) {
+    shopify.productImage.create(8935867723, {
+      "attachment": base64_encode('test.png'),
+      "filename": "rails_logo2.gif"
+    })
+      .then(product => console.log('product created: ', product))
+      .catch(err => console.error(err));
   });
 
 module.exports = router;
