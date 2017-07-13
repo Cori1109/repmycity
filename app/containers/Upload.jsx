@@ -10,8 +10,17 @@ class Upload extends React.Component {
   constructor(){
     super();
 
+    this.formData = new FormData();
     this.state = {
       file: null,
+      fileCoordinates: {
+        x: 0,
+        y: 0
+      },
+      fileDimensions: {
+        width: 0,
+        height: 0
+      },
       dropzoneActive: false,
       shirtStyles: [
         {
@@ -43,12 +52,36 @@ class Upload extends React.Component {
     });
   }
 
+  handleCreateImage() {
+    let backgroundImage = this.state.shirtStyles[this.state.activeShirtStyle].image;
+    let filename = this.state.file;
+    let fileDimensions = this.state.fileDimensions;
+    let fileCoordinates = this.state.fileCoordinates;
+
+    let data = {
+      backgroundImage,
+      filename,
+      fileDimensions,
+      fileCoordinates
+    };
+
+    console.log('creating image...', data);
+
+    axios.post('/shopify/new_product_image', data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      console.log('success creating image!: ', response);
+    })
+    .catch(error => console.log('Error creating image file: ', error));
+  }
+
   onDrop(files) {
     let file = files[0];
-    let data = new FormData();
-    data.append('file', file);
-
-    axios.post('/upload/file', data, {
+    this.formData.append('file', file);
+    axios.post('/upload/file', this.formData, {
       headers: {
         'Content-Type': file.type
       }
@@ -57,20 +90,32 @@ class Upload extends React.Component {
       console.log('success!: ', response);
 
       this.setState({
-        file: `/uploads/${response.data.filename}`
+        file: response.data.filename
       });
     })
     .catch(error => console.log('Error uploading file: ', error));
+  }
+
+  handleResized(e, data) {
+    let x = data.x;
+    let y = data.y;
+    let width = e.path[1].clientWidth;
+    let height = e.path[1].clientHeight;
+    this.setState({
+      fileCoordinates: { x, y },
+      fileDimensions: { width, height }
+    });
+    console.log('x: ', x);
+    console.log('y: ', y);
+    console.log('width: ', width);
+    console.log('height: ', height);
+    console.log(this.state);
   }
 
   render() {
     let {dispatch} = this.props;
     let {file, shirtStyles, activeShirtStyle, dropzoneActive} = this.state;
     let dropzoneRef;
-
-    axios.get('/shopify').then((data) => {
-      console.log('data: ', data);
-    });
 
     return (
       <div className="container">
@@ -90,16 +135,13 @@ class Upload extends React.Component {
               <div className="shirt-color blue"></div>
               <div className="shirt-color black"></div>
               <div className="shirt-color white"></div>
-              <div className="shirt-color blue"></div>
-              <div className="shirt-color black"></div>
-              <div className="shirt-color white"></div>
-              <div className="shirt-color blue"></div>
-              <div className="shirt-color black"></div>
-              <div className="shirt-color white"></div>
             </div>
 
             <label for="add-artwork">Add your artwork</label>
             <button type="button" className="button" onClick={() => { dropzoneRef.open() }}>Upload artwork</button>
+            <div>
+              <button type="button" className="button" onClick={this.handleCreateImage.bind(this)}>Create Image</button>
+            </div>
           </div>
           <div className="small-8 small-offset-1">
             <div className="preview" style={{backgroundImage: `url('/images/${shirtStyles[activeShirtStyle].image}')`}}>
@@ -114,14 +156,16 @@ class Upload extends React.Component {
               >
                 <Rnd
                   default={{
-                    x: 0,
-                    y: 0,
+                    x: this.state.fileCoordinates.x,
+                    y: this.state.fileCoordinates.y,
                     width: 200,
-                    maxWidth: 300,
+                    maxWidth: 200,
                   }}
                   bounds="parent"
+                  onResizeStop={this.handleResized.bind(this)}
+                  onDragStop={this.handleResized.bind(this)}
                 >
-                  <img src={file} />
+                  {file ? <img src={`uploads/${file}`} /> : '' }
                 </Rnd>
               </Dropzone>
             </div>

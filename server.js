@@ -2,6 +2,7 @@ let express = require('express');
 let app = express();
 let logger = require('morgan');
 let cors = require('cors');
+let bodyParser = require('body-parser');
 let shopify = require('./routes/shopify');
 let upload = require('./routes/upload');
 require('dotenv').config();
@@ -28,6 +29,8 @@ app.use(express.static(__dirname + '/public'));
 
 // Setting up basic middleware for all Express requests
 app.use(logger('dev')); // Log requests to API using morgan
+
+app.use(bodyParser.json());
 
 // Shopify routes
 app.use('/shopify', shopify);

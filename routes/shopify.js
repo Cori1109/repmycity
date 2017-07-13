@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 let Shopify = require('shopify-api-node');
 let fs = require('fs');
+let gm = require('gm');
 
 // function to encode file data to base64 encoded string
 function base64_encode(file) {
@@ -22,34 +23,67 @@ const shopify = new Shopify({
   apiKey: process.env.SHOPIFY_API_KEY,
   password: process.env.SHOPIFY_API_KEY_PASSWORD
 });
-
-// Index route for Shopify
-router.route('/')
-  .get(function (req, res) {
-    console.log('getting data from Shopify...');
-    shopify.product.list({ limit: 5 })
-      .then(orders => console.log(orders))
-      .catch(err => console.error(err));
-  });
-
-// Create new product
-router.route('/new_product')
-  .post(function (req, res) {
-    shopify.product.create({
-      title: 'test prod1'
-    })
-    .then(product => console.log('product created: ', product))
-    .catch(err => console.error(err));
-  });
+//
+// // Index route for Shopify
+// router.route('/')
+//   .get(function (req, res) {
+//     console.log('getting data from Shopify...');
+//     shopify.product.list({ limit: 5 })
+//       .then(orders => console.log(orders))
+//       .catch(err => console.error(err));
+//   });
+//
+// // Create new product
+// router.route('/new_product')
+//   .post(function (req, res) {
+//     shopify.product.create({
+//       title: 'test prod1'
+//     })
+//     .then(product => console.log('product created: ', product))
+//     .catch(err => console.error(err));
+//   });
 
 // Create new product image
 router.route('/new_product_image')
   .post(function (req, res) {
+    const uploadedImage = 'public/uploads/' + req.body.filename;
+    const backgroundImage = 'public/images/' + req.body.backgroundImage;
+
+    const fileDimensions = req.body.fileDimensions;
+    const fileCoordinates = req.body.fileCoordinates;
+
+    console.log('fileDimensions: ', fileDimensions);
+    console.log('fileCoordinates: ', fileCoordinates);
+
+    const uploadedImageWidth = fileDimensions.width;
+    const uploadedImageHeight = fileDimensions.height;
+    const uploadedImageOffsetX = 155 + fileCoordinates.x;
+    const uploadedImageOffsetY = 110 + fileCoordinates.y;
+
+    const newProductImagePath = `public/images/custom-products/${ req.body.filename }`;
+
+    gm()
+      .subCommand('composite')
+      .in('-geometry', `${uploadedImageWidth}x${uploadedImageHeight}+${uploadedImageOffsetX}+${uploadedImageOffsetY}`)
+      .in(uploadedImage)
+      .in(backgroundImage)
+      .write(newProductImagePath, function(err, stdout, stderr, command){
+        if (err){
+            console.log('image conversion error!');
+            console.log(err);
+            console.log(command);
+        }else{
+            console.log('image converted with command :');
+            console.log(command);
+        }
+      });
+
+
     shopify.productImage.create(8935867723, {
-      "attachment": base64_encode('test.png'),
-      "filename": "rails_logo2.gif"
+      "attachment": base64_encode(newProductImagePath),
+      "filename": req.body.filename
     })
-      .then(product => console.log('product created: ', product))
+      .then(productImage => console.log('product image created: ', productImage))
       .catch(err => console.error(err));
   });
 
